@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            height: 100vh;
+            background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ad8fc68c-bf71-4b9c-933f-c433236e9526/dfyepb8-70413fad-0185-481e-9b72-549b2196cce2.jpg/v1/fill/w_1920,h_1082,q_75,strp/sunset_at_lake__3_by_various78_dfyepb8-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MiIsInBhdGgiOiJcL2ZcL2FkOGZjNjhjLWJmNzEtNGI5Yy05MzNmLWM0MzMyMzZlOTUyNlwvZGZ5ZXBiOC03MDQxM2ZhZC0wMTg1LTQ4MWUtOWI3Mi01NDliMjE5NmNjZTIuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.0J-deqj2xwplqvRKiPtKPh30AltQ3HGAqATsS5ju3GQ");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #box {
+            width: 50vw;
+            height: 50vh;
+            background-color: rgba(0, 0, 0, 0.404);
+            display: flex;
+            justify-content: end;
+            background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ad8fc68c-bf71-4b9c-933f-c433236e9526/dfyepb8-70413fad-0185-481e-9b72-549b2196cce2.jpg/v1/fill/w_1920,h_1082,q_75,strp/sunset_at_lake__3_by_various78_dfyepb8-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MiIsInBhdGgiOiJcL2ZcL2FkOGZjNjhjLWJmNzEtNGI5Yy05MzNmLWM0MzMyMzZlOTUyNlwvZGZ5ZXBiOC03MDQxM2ZhZC0wMTg1LTQ4MWUtOWI3Mi01NDliMjE5NmNjZTIuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.0J-deqj2xwplqvRKiPtKPh30AltQ3HGAqATsS5ju3GQ");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #login-box {
+            height: 100%;
+            width: 350px;
+            background-color: rgba(255, 255, 255, 0.192);
+        }
+
+        #login-signup {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 50px;
+            margin: 50px 0px;
+        }
+
+        .text {
+            font-size: 20px;
+            padding: 12px;
+            font-weight: 700;
+            border: 1px solid black;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(to right bottom, rgb(236, 21, 200), rgb(20, 115, 238));
+            transition: box-shadow 0.4s linear;
+            color: white;
+            cursor: pointer;
+        }
+
+        .text:hover {
+            box-shadow: 2px 2px 8px 4px rgb(235, 175, 10), -2px -2px 5px 5px rgb(80, 238, 230);
+        }
+
+        #inputs {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 30px 0px;
+        }
+
+        .input-container {
+            position: relative;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .input-container svg {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            fill: gray;
+        }
+
+        .type {
+            border: none;
+            border-radius: 12px;
+            background-color: rgba(252, 194, 252, 0.849);
+            padding: 10px 10px 10px 40px;
+            width: 250px;
+        }
+
+        #pass-rules {
+            display: none;
+            align-items: start;
+            flex-direction: column;
+        }
+
+        #pass-rules p {
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 40px;
+            padding: 2px;
+        }
+
+        #btn {
+            margin: 30px 130px 10px 130px;
+            padding: 10px 25px;
+            border-radius: 12px;
+            border: 1px solid white;
+            background: linear-gradient(30deg, coral, lawngreen);
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            color: black;
+            box-shadow: 2px 2px 5px 5px yellow;
+        }
+
+        .error-message {
+            font-size: 12px;
+            position: absolute;
+            left: 10px;
+            top: 40px;
+            color: red;
+        }
+
+        @media  (max-width: 650px) {
+            #box {
+                width: 80%;
+                height: 80%;
+            }
+            .text {
+                font-size: 14px;
+                padding: 6px;
+                margin-left: 25px;
+            }
+            .input-container {
+                width: 55%;
+            }
+            .type {
+                width: 180px;
+            }
+            #pass-rules p {
+                margin-left: 80px;
+            }
+            #btn {
+                padding: 5px 10px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="box">
+            <div id="login-box">
+                <div id="login-signup">
+                    <div class="text login">Log In</div>
+                    <div class="text signup">Sign Up</div>
+                </div>
+                <div id="inputs">
+                    <div class="input-container">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z"
+                                    fill="#000000"></path>
+                                <path d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z"
+                                    fill="#000000"></path>
+                            </g>
+                        </svg>
+                        <input class="type email" type="text" placeholder="Enter your Email..." required>
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+                    <div class="input-container">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M4 6V4C4 1.79086 5.79086 0 8 0C10.2091 0 12 1.79086 12 4V6H14V16H2V6H4ZM6 4C6 2.89543 6.89543 2 8 2C9.10457 2 10 2.89543 10 4V6H6V4ZM7 13V9H9V13H7Z"
+                                    fill="#000000"></path>
+                            </g>
+                        </svg>
+                        <input class="type password" type="text" placeholder="Enter your password..." required>
+                        <span class="error-message" id="password-error"></span>
+                    </div>
+                </div>
+                <div id="pass-rules">
+                    <p>1. Password length must greater or equal to 8</p>
+                    <p>2. Atleast one uppercase letter</p>
+                    <p>3. Atleast one lowercase letter</p>
+                    <p>4. Atleast one number</p>
+                    <p>5. Atleast one special character</p>
+                </div>
+                <button id="btn">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let login = document.querySelector(".login");
+        let signup = document.querySelector(".signup");
+        let button = document.getElementById("btn");
+        let passrules = document.getElementById("pass-rules");
+        let email = document.querySelector(".email");
+        let password = document.querySelector(".password");
+        let notValid = document.querySelector(".input-container");
+        let emailError = document.getElementById("email-error");
+        let passError = document.getElementById("password-error");
+
+        function validPassword() {
+            let newPassword = password.value;
+
+            let maxLength = false;
+            let uppercase = false;
+            let lowercase = false;
+            let number = false;
+            let specialChar = false;
+
+            if (newPassword.length >= 8) {
+                maxLength = true;
+            }
+
+
+            for (let i = 0; i < newPassword.length; i++) {
+                let code = newPassword.charCodeAt(i);
+                if (code >= 65 && code <= 90) {
+                    uppercase = true;
+                }
+                else if (code >= 97 && code <= 122) {
+                    lowercase = true;
+                }
+                else if (code >= 48 && code <= 57) {
+                    number = true;
+                }
+                else if ((code >= 32 && code <= 47) || (code >= 58 && code <= 64) || (code >= 91 && code <= 96) || (code >= 123 && code <= 126)) {
+                    specialChar = true;
+                }
+            }
+
+            return (maxLength && uppercase && lowercase && number && specialChar);
+        }
+
+        signup.addEventListener("click", () => {
+            button.innerHTML = "SignUp"
+            passrules.style.display = "flex";
+            email.setAttribute("placeholder", "Enter your Email...");
+            password.setAttribute("placeholder", "Enter your password...");
+        })
+
+        login.addEventListener("click", () => {
+            button.innerHTML = "Login"
+            passrules.style.display = "none";
+            email.setAttribute("placeholder", "Enter your Email...");
+            password.setAttribute("placeholder", "Enter your password...");
+        })
+
+        btn.addEventListener("click", () => {
+            if (!email.value.endsWith("@gmail.com")) {
+                email.value = ""
+                email.setAttribute("placeholder", "Write Email Propely...");
+                email.style.border = "2px solid red";
+                emailError.textContent = "Invalid Email";
+            }
+            else {
+                email.style.border = "none";
+                emailError.textContent = ""
+            }
+
+            if (!validPassword()) {
+                password.value = ""
+                password.setAttribute("placeholder", "Write proper password...");
+                password.style.border = "2px solid red";
+                passError.textContent = "Invalid Password "
+            }
+            else {
+                password.style.border = "none";
+                passError.textContent = "";
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
